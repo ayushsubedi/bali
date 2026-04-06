@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bali 2026 — Subedi Family Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5EFE6;
+    --sand-dark: #E8DDD0;
+    --palm: #2D4A3E;
+    --palm-light: #3D6B5A;
+    --palm-muted: #5A7F6E;
+    --sunset: #C4622D;
+    --sunset-light: #E8844A;
+    --gold: #B8942A;
+    --gold-light: #D4A93A;
+    --ink: #1A1A18;
+    --ink-muted: #3D3D38;
+    --smoke: #7A7A72;
+    --paper: #FDFAF5;
+    --white: #FFFFFF;
+    --shadow: rgba(26,26,24,0.08);
+    --shadow-md: rgba(26,26,24,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+
+  /* HERO */
+  .hero { min-height: 100vh; background: var(--palm); position: relative; display: flex; align-items: flex-end; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 100%, rgba(196,98,45,0.35) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 20%, rgba(45,74,62,0.8) 0%, transparent 70%), linear-gradient(160deg, #1a2e26 0%, #2D4A3E 40%, #1e3a30 100%); }
+  .hero-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle at 15% 25%, rgba(184,148,42,0.12) 0%, transparent 40%), radial-gradient(circle at 85% 70%, rgba(196,98,45,0.15) 0%, transparent 45%); }
+  .hero-content { position: relative; z-index: 2; padding: 80px 60px; max-width: 960px; }
+  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 8vw, 96px); font-weight: 300; color: var(--sand); line-height: 0.95; margin-bottom: 8px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero-title em { font-style: italic; color: var(--sunset-light); }
+  .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 3vw, 26px); font-weight: 300; color: rgba(245,239,230,0.65); margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+  .meta-pill { padding: 7px 16px; border: 1px solid rgba(245,239,230,0.2); border-radius: 100px; font-size: 12px; color: rgba(245,239,230,0.75); backdrop-filter: blur(8px); background: rgba(255,255,255,0.05); }
+  .meta-pill.highlight { border-color: var(--gold-light); color: var(--gold-light); }
+  .travellers { display: flex; flex-wrap: wrap; gap: 8px; opacity: 0; animation: fadeUp 0.8s ease 1s forwards; }
+  .traveller { display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 100px; }
+  .t-av { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; color: white; flex-shrink: 0; }
+  .t-name { font-size: 12px; color: rgba(245,239,230,0.85); line-height: 1.2; }
+  .t-role { font-size: 10px; color: rgba(245,239,230,0.42); }
+
+  /* NAV */
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: var(--palm); border-bottom: 1px solid rgba(245,239,230,0.1); padding: 0 40px; display: flex; gap: 0; overflow-x: auto; }
+  .sticky-nav::-webkit-scrollbar { display: none; }
+  .nav-item { padding: 14px 16px; font-size: 11px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,239,230,0.5); text-decoration: none; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .nav-item:hover { color: var(--sand); border-bottom-color: var(--gold-light); }
+
+  /* SECTIONS */
+  section { padding: 80px 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .section-header { display: flex; align-items: flex-end; gap: 20px; margin-bottom: 48px; padding-bottom: 20px; border-bottom: 1px solid var(--sand-dark); }
+  .section-number { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: var(--sand-dark); line-height: 1; flex-shrink: 0; }
+  .section-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sunset); margin-bottom: 4px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; color: var(--palm); line-height: 1.1; }
+
+  /* FLIGHTS */
+  #flights { background: var(--ink); }
+  #flights .section-number { color: rgba(255,255,255,0.06); }
+  #flights .section-eyebrow { color: var(--gold-light); }
+  #flights .section-title { color: var(--sand); }
+  #flights .section-header { border-bottom-color: rgba(255,255,255,0.08); }
+  .flights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .flight-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 24px; transition: border-color 0.2s; }
+  .flight-card:hover { border-color: rgba(184,148,42,0.4); }
+  .fc-eyebrow { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; }
+  .flight-route { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .f-airport { text-align: center; }
+  .f-code { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: var(--sand); line-height: 1; }
+  .f-time { font-size: 17px; font-weight: 500; color: var(--gold-light); margin-top: 2px; }
+  .f-label { font-size: 10px; color: rgba(245,239,230,0.35); margin-top: 2px; }
+  .f-line { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .f-track { width: 100%; height: 1px; background: linear-gradient(90deg, var(--gold-light), rgba(184,148,42,0.25)); position: relative; }
+  .f-track::after { content: '✈'; position: absolute; right: -2px; top: -9px; font-size: 14px; color: var(--gold-light); }
+  .f-dur { font-size: 10px; color: rgba(245,239,230,0.35); letter-spacing: 0.04em; }
+  .flight-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ftag { font-size: 11px; padding: 2px 9px; border-radius: 100px; background: rgba(255,255,255,0.05); color: rgba(245,239,230,0.55); border: 1px solid rgba(255,255,255,0.08); }
+
+  /* ITINERARY */
+  #itinerary { background: var(--paper); }
+  .leg-block { margin-bottom: 64px; }
+  .leg-title-bar { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+  .leg-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .leg-icon.beach { background: rgba(196,98,45,0.12); border: 1px solid rgba(196,98,45,0.2); }
+  .leg-icon.jungle { background: rgba(45,74,62,0.12); border: 1px solid rgba(45,74,62,0.2); }
+  .leg-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--palm); }
+  .leg-dates { font-size: 12px; color: var(--smoke); }
+  .days-timeline { padding-left: 36px; position: relative; }
+  .days-timeline::before { content: ''; position: absolute; left: 9px; top: 14px; bottom: 14px; width: 1px; background: linear-gradient(180deg, var(--palm-muted), var(--sand-dark)); }
+  .day-block { position: relative; margin-bottom: 36px; }
+  .day-dot { position: absolute; left: -30px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--palm); border: 2px solid var(--paper); box-shadow: 0 0 0 2px var(--palm-muted); }
+  .day-date { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sunset); margin-bottom: 4px; }
+  .day-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--palm); margin-bottom: 16px; }
+  .activities { display: flex; flex-direction: column; gap: 10px; }
+  .act-row { display: flex; gap: 14px; align-items: flex-start; }
+  .act-time { font-size: 11px; color: var(--smoke); min-width: 60px; padding-top: 2px; flex-shrink: 0; }
+  .act-title { font-size: 14px; color: var(--ink); font-weight: 500; line-height: 1.4; }
+  .act-note { font-size: 13px; color: var(--smoke); margin-top: 2px; line-height: 1.5; }
+  .kid-badge { display: inline-block; font-size: 10px; padding: 1px 7px; background: #E1F5EE; color: #085041; border-radius: 100px; margin-left: 6px; vertical-align: middle; font-weight: 400; }
+
+  /* VILLAS */
+  #villas { background: var(--sand); }
+  .villas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+  .villa-card { background: var(--paper); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+  .villa-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px var(--shadow-md); }
+  .villa-card.featured { border: 2px solid var(--gold); }
+  .villa-header { padding: 22px 22px 14px; }
+  .villa-feat-badge { display: inline-flex; align-items: center; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 2px 9px; border-radius: 100px; margin-bottom: 8px; }
+  .villa-loc { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sunset); margin-bottom: 5px; }
+  .villa-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--palm); margin-bottom: 3px; line-height: 1.2; }
+  .villa-addr { font-size: 12px; color: var(--smoke); margin-bottom: 10px; }
+  .villa-rating { display: flex; align-items: center; gap: 6px; }
+  .stars { color: var(--gold); font-size: 12px; }
+  .r-num { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .r-cnt { font-size: 12px; color: var(--smoke); }
+  .villa-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 22px 14px; }
+  .vtag { font-size: 11px; padding: 2px 9px; border-radius: 100px; background: var(--sand); color: var(--ink-muted); border: 1px solid var(--sand-dark); }
+  .vtag.g { background: #E1F5EE; color: #085041; border-color: #9FE1CB; }
+  .vtag.o { background: #FAEEDA; color: #633806; border-color: #FAC775; }
+  .villa-note { padding: 12px 22px; background: #FAFAF7; border-top: 1px solid var(--sand-dark); font-size: 12px; color: var(--smoke); line-height: 1.5; }
+
+  /* DINING */
+  #dining { background: var(--paper); }
+  .dining-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .dining-card { padding: 20px; border-radius: 12px; border: 1px solid var(--sand-dark); background: var(--white); transition: border-color 0.2s; }
+  .dining-card:hover { border-color: var(--palm-muted); }
+  .d-type { font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sunset); margin-bottom: 5px; }
+  .d-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--palm); margin-bottom: 8px; }
+  .d-desc { font-size: 13px; color: var(--smoke); margin-bottom: 12px; line-height: 1.55; }
+
+  /* TIPS */
+  #tips { background: var(--palm); }
+  #tips .section-number { color: rgba(255,255,255,0.06); }
+  #tips .section-eyebrow { color: var(--gold-light); }
+  #tips .section-title { color: var(--sand); }
+  #tips .section-header { border-bottom-color: rgba(255,255,255,0.1); }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .tip-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 22px; transition: border-color 0.2s; }
+  .tip-card:hover { border-color: rgba(184,148,42,0.35); }
+  .tip-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+  .tip-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--sand); margin-bottom: 8px; }
+  .tip-body { font-size: 13px; color: rgba(245,239,230,0.62); line-height: 1.6; }
+  .tip-hl { color: var(--gold-light); font-weight: 500; }
+
+  /* MAP */
+  #map-section { background: var(--ink); }
+  #map-section .section-number { color: rgba(255,255,255,0.06); }
+  #map-section .section-eyebrow { color: var(--gold-light); }
+  #map-section .section-title { color: var(--sand); }
+  #map-section .section-header { border-bottom-color: rgba(255,255,255,0.1); }
+  .map-embed { border-radius: 14px; overflow: hidden; height: 420px; border: 1px solid rgba(255,255,255,0.08); }
+  .map-embed iframe { width: 100%; height: 100%; border: none; }
+  .map-pins { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 18px; }
+  .map-pin { display: flex; align-items: flex-start; gap: 10px; padding: 11px 13px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 9px; }
+  .pin-dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+  .pin-name { font-size: 13px; color: var(--sand); font-weight: 500; line-height: 1.3; }
+  .pin-type { font-size: 11px; color: rgba(245,239,230,0.38); margin-top: 1px; }
+
+  /* LOGISTICS */
+  #logistics { background: var(--paper); }
+  .logistics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .logistics-heading { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--palm); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--sand-dark); }
+  .logi-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .logi-list li { display: flex; gap: 9px; font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+  .logi-list li::before { content: '→'; color: var(--sunset); flex-shrink: 0; margin-top: 1px; }
+
+  /* CHECKLIST */
+  #checklist { background: var(--sand); }
+  .checklist-items { display: flex; flex-direction: column; gap: 11px; }
+  .cl-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: var(--paper); border-radius: 10px; border: 1px solid var(--sand-dark); }
+  .cl-box { width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid var(--sand-dark); flex-shrink: 0; margin-top: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .cl-box:hover { border-color: var(--palm); }
+  .cl-box.done { background: var(--palm); border-color: var(--palm); }
+  .cl-box.done::after { content: '✓'; color: white; font-size: 12px; }
+  .cl-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .cl-sub { font-size: 12px; color: var(--smoke); margin-top: 2px; line-height: 1.5; }
+  .badge-urgent { display: inline-block; font-size: 10px; padding: 1px 7px; background: #FCEBEB; color: #A32D2D; border-radius: 100px; margin-left: 7px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+  .badge-soon { display: inline-block; font-size: 10px; padding: 1px 7px; background: #FAEEDA; color: #633806; border-radius: 100px; margin-left: 7px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* ALERTS */
+  .alert { padding: 14px 18px; border-radius: 10px; font-size: 13px; line-height: 1.6; margin-top: 14px; }
+  .alert-warn { background: #FAEEDA; color: #633806; border-left: 3px solid var(--gold); }
+  .alert-urgent { background: #FCEBEB; color: #791F1F; border-left: 3px solid #E24B4A; }
+  .alert-tip { background: #E1F5EE; color: #085041; border-left: 3px solid #1D9E75; }
+
+  /* FOOTER */
+  footer { background: var(--ink); padding: 56px 40px; text-align: center; }
+  .footer-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--sand); margin-bottom: 8px; }
+  .footer-sub { font-size: 13px; color: rgba(245,239,230,0.35); margin-bottom: 24px; }
+  .footer-ref { font-size: 11px; color: rgba(245,239,230,0.2); letter-spacing: 0.08em; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .ornament { text-align: center; color: var(--sand-dark); font-size: 18px; letter-spacing: 12px; margin: 0 0 28px; }
+  .sub-heading { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--palm); margin-bottom: 18px; font-weight: 400; }
+
+  @media (max-width: 720px) {
+    .flights-grid { grid-template-columns: 1fr; }
+    .logistics-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 20px; }
+    .hero-content { padding: 40px 24px; }
+    .sticky-nav { padding: 0 16px; }
+    footer { padding: 40px 20px; }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Family Trip · June 2026 · Booking Ref: 8K439U · Sky Bridge Tours, Kathmandu</p>
+    <h1 class="hero-title"><em>Bali</em><br>Together</h1>
+    <p class="hero-subtitle">Seminyak · Ubud · 5 Nights · 8 Adults · 2 Little Ones</p>
+    <div class="hero-meta">
+      <span class="meta-pill highlight">Jun 13 → Jun 18, 2026</span>
+      <span class="meta-pill">Malaysia Airlines</span>
+      <span class="meta-pill">MH115 / MH715 / MH714 / MH114</span>
+      <span class="meta-pill">25kg Baggage Each · Meals Included</span>
+      <span class="meta-pill">Economy Class — Confirmed</span>
+    </div>
+    <div class="travellers">
+      <div class="traveller"><div class="t-av" style="background:#2D4A3E">AS</div><div><div class="t-name">Ayush</div><div class="t-role">Kathmandu</div></div></div>
+      <div class="traveller"><div class="t-av" style="background:#3D6B5A">SA</div><div><div class="t-name">Salina</div><div class="t-role">Kathmandu</div></div></div>
+      <div class="traveller"><div class="t-av" style="background:#1D9E75">SH</div><div><div class="t-name">Shlok</div><div class="t-role">16 months 👶</div></div></div>
+      <div class="traveller"><div class="t-av" style="background:#C4622D">SR</div><div><div class="t-name">Sara</div><div class="t-role">3 years 🧒</div></div></div>
+      <div class="traveller"><div class="t-av" style="background:#B8942A">RA</div><div><div class="t-name">Rama</div><div class="t-role">Kathmandu</div></div></div>
+      <div class="traveller"><div class="t-av" style="background:#7A5C9E">SD</div><div><div class="t-name">Sandip</div><div class="t-role">Kathmandu</div></div></div>
+      <div class="traveller"><div class="t-av" style="background:#4A7BA3">SI</div><div><div class="t-name">Sitasma</div><div class="t-role">Australia 🇦🇺</div></div></div>
+      <div class="traveller"><div class="t-av" style="background:#5A8C6E">AJ</div><div><div class="t-name">Ajnish</div><div class="t-role">Australia 🇦🇺</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="sticky-nav">
+  <a href="#flights" class="nav-item">Flights</a>
+  <a href="#itinerary" class="nav-item">Itinerary</a>
+  <a href="#villas" class="nav-item">Villas</a>
+  <a href="#dining" class="nav-item">Dining</a>
+  <a href="#map-section" class="nav-item">Map</a>
+  <a href="#tips" class="nav-item">Tips</a>
+  <a href="#logistics" class="nav-item">Logistics</a>
+  <a href="#checklist" class="nav-item">Checklist</a>
+</nav>
+
+<!-- FLIGHTS -->
+<section id="flights">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-number">01</div>
+      <div class="section-label-group">
+        <div class="section-eyebrow">Malaysia Airlines · Booking Ref: 8K439U · ETKT 232 6027115452 / 453</div>
+        <div class="section-title">Flights</div>
+      </div>
+    </div>
+    <div class="flights-grid reveal">
+      <div class="flight-card">
+        <div class="fc-eyebrow">Outbound · Fri 12 Jun → Sat 13 Jun</div>
+        <div class="flight-route">
+          <div class="f-airport"><div class="f-code">KTM</div><div class="f-time">22:45</div><div class="f-label">Tribhuvan Intl · Terminal I</div></div>
+          <div class="f-line"><div class="f-track"></div><div class="f-dur">4h 40m · MH115 · Boeing 737 MAX 8</div></div>
+          <div class="f-airport"><div class="f-code">KUL</div><div class="f-time">05:40</div><div class="f-label">KLIA Terminal 1</div></div>
+        </div>
+        <div class="flight-tags"><span class="ftag">Non-stop</span><span class="ftag">Economy (S)</span><span class="ftag">Meal included</span><span class="ftag">25kg baggage</span><span class="ftag">Overnight flight</span></div>
+      </div>
+      <div class="flight-card">
+        <div class="fc-eyebrow">Connection · Sat 13 Jun · 3h 20m layover</div>
+        <div class="flight-route">
+          <div class="f-airport"><div class="f-code">KUL</div><div class="f-time">09:00</div><div class="f-label">KLIA Terminal 1</div></div>
+          <div class="f-line"><div class="f-track"></div><div class="f-dur">3h 05m · MH715 · Airbus A330-300</div></div>
+          <div class="f-airport"><div class="f-code">DPS</div><div class="f-time">12:05</div><div class="f-label">Ngurah Rai Bali · Terminal I</div></div>
+        </div>
+        <div class="flight-tags"><span class="ftag">Non-stop</span><span class="ftag">Economy (S)</span><span class="ftag">Meal included</span><span class="ftag">Land noon Jun 13</span></div>
+      </div>
+      <div class="flight-card">
+        <div class="fc-eyebrow">Return · Thu 18 Jun</div>
+        <div class="flight-route">
+          <div class="f-airport"><div class="f-code">DPS</div><div class="f-time">13:05</div><div class="f-label">Ngurah Rai · Terminal I</div></div>
+          <div class="f-line"><div class="f-track"></div><div class="f-dur">2h 55m · MH714 · A330-900NEO</div></div>
+          <div class="f-airport"><div class="f-code">KUL</div><div class="f-time">16:00</div><div class="f-label">KLIA Terminal 1</div></div>
+        </div>
+        <div class="flight-tags"><span class="ftag">Non-stop</span><span class="ftag">Economy (S)</span><span class="ftag">Meal included</span><span class="ftag" style="color:#C4622D;border-color:rgba(196,98,45,0.3)">Depart Ubud by 9:30 AM</span></div>
+      </div>
+      <div class="flight-card">
+        <div class="fc-eyebrow">Home · Thu 18 Jun · 3h 15m layover</div>
+        <div class="flight-route">
+          <div class="f-airport"><div class="f-code">KUL</div><div class="f-time">19:15</div><div class="f-label">KLIA Terminal 1</div></div>
+          <div class="f-line"><div class="f-track"></div><div class="f-dur">4h 45m · MH114 · Boeing 737 MAX 8</div></div>
+          <div class="f-airport"><div class="f-code">KTM</div><div class="f-time">21:45</div><div class="f-label">Tribhuvan Intl · Terminal I</div></div>
+        </div>
+        <div class="flight-tags"><span class="ftag">Non-stop</span><span class="ftag">Economy (S)</span><span class="ftag">Meal included</span><span class="ftag">Arrive KTM 21:45</span></div>
+      </div>
+    </div>
+    <div class="alert alert-tip reveal">
+      <strong>Shlok is on infant ticket MH/ETKT 232 6027115453</strong> — no separate seat, travels on lap. Present both tickets together at check-in. The KUL layover (3h 20m) is ideal for feeding, nappy change, and a walk before the Bali leg.
+    </div>
+    <div class="alert alert-warn reveal" style="margin-top:10px">
+      <strong>Sitasma & Ajnish (Australia):</strong> Confirm their DPS arrival time ASAP. Direct flights from Sydney / Melbourne to Bali take ~6–6.5h. If they're landing near noon Jun 13, coordinate so everyone shares the airport minibus together.
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="itinerary">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-number">02</div>
+      <div class="section-label-group">
+        <div class="section-eyebrow">Jun 13–18 · 5 Nights · Mixed Relaxed & Sightseeing</div>
+        <div class="section-title">Day-by-Day Itinerary</div>
+      </div>
+    </div>
+
+    <!-- SEMINYAK LEG -->
+    <div class="leg-block reveal">
+      <div class="leg-title-bar">
+        <div class="leg-icon beach">🏖</div>
+        <div><div class="leg-name">Seminyak</div><div class="leg-dates">Saturday June 13 – Monday June 15 · 2 nights</div></div>
+      </div>
+      <div class="days-timeline">
+        <div class="day-block">
+          <div class="day-dot"></div>
+          <div class="day-date">Saturday · 13 June</div>
+          <div class="day-title">Arrival Day — Noon Landing</div>
+          <div class="activities">
+            <div class="act-row"><div class="act-time">12:05 PM</div><div class="act-body"><div class="act-title">Land at Ngurah Rai (DPS)</div><div class="act-note">Immigration + baggage takes 45–60 min. Pre-arranged 12-seater minibus meets you at arrivals. ~45 min drive to Seminyak (~IDR 500k total, split 8 ways = nothing).</div></div></div>
+            <div class="act-row"><div class="act-time">~2:00 PM</div><div class="act-body"><div class="act-title">Check In — Villa Pool <span class="kid-badge">🧒 toddler nap window</span></div><div class="act-note">Don't rush anywhere. Let Shlok and Sara decompress from the journey. Order fresh coconuts from the villa. Adults: sit by the pool and exhale. This is Bali.</div></div></div>
+            <div class="act-row"><div class="act-time">5:30 PM</div><div class="act-body"><div class="act-title">Seminyak Beach Sunset Walk</div><div class="act-note">Flat, wide beach — easy for strollers and toddlers on foot. June sunset is approximately 6:15 PM. One of the most beautiful on earth. Bring the camera.</div></div></div>
+            <div class="act-row"><div class="act-time">7:30 PM</div><div class="act-body"><div class="act-title">In-Villa Dinner — First Night Together</div><div class="act-note">Ask the villa chef to cook for all 10 of you tonight. Everyone eats at one table, on arrival night, without dragging two toddlers to a restaurant. Set the tone for the whole trip.</div></div></div>
+          </div>
+        </div>
+        <div class="day-block">
+          <div class="day-dot"></div>
+          <div class="day-date">Sunday · 14 June</div>
+          <div class="day-title">Seminyak — Beach Club & Sunset Bars</div>
+          <div class="activities">
+            <div class="act-row"><div class="act-time">Morning</div><div class="act-body"><div class="act-title">Villa Breakfast — then Split the Group</div><div class="act-note">Adults wanting the full beach club experience → Potato Head Beach Club (reserve sun-beds online, arrive 10 AM). Adults staying with Shlok & Sara → villa pool or quiet beach walk. The beauty of one big private villa base.</div></div></div>
+            <div class="act-row"><div class="act-time">12:30 PM</div><div class="act-body"><div class="act-title">Lunch — Nook Rice Fields</div><div class="act-note">Low tables over active rice paddies. Kids can watch ducks and frogs while you eat. Good Indonesian and Western food, excellent fresh juices. Very toddler-friendly.</div></div></div>
+            <div class="act-row"><div class="act-time">2:30 PM</div><div class="act-body"><div class="act-title">Villa Pool + In-Villa Massages <span class="kid-badge">🧒 nap time</span></div><div class="act-note">Book 2–3 therapists to come to the villa simultaneously. Traditional Balinese massage while the kids nap is the quintessential Bali afternoon.</div></div></div>
+            <div class="act-row"><div class="act-time">5:30 PM</div><div class="act-body"><div class="act-title">Rooftop Cocktail Sunset Bar — Double Six</div><div class="act-note">2-for-1 cocktails at happy hour. Panoramic views over the Seminyak coast. Open air, totally fine for toddlers before 7 PM. Great group photo on the rooftop.</div></div></div>
+            <div class="act-row"><div class="act-time">7:30 PM</div><div class="act-body"><div class="act-title">Dinner — Ocean Grand Beach (Fire Show)</div><div class="act-note">Nightly fire ring performance and live band. Fresh seafood — the whole sea bass and scallops are outstanding. Very family-friendly outdoor setting. Sara will be fascinated by the fire dancers. ★4.8, 2000+ reviews.</div></div></div>
+          </div>
+        </div>
+        <div class="day-block">
+          <div class="day-dot"></div>
+          <div class="day-date">Monday · 15 June</div>
+          <div class="day-title">Check Out — Drive to Ubud</div>
+          <div class="activities">
+            <div class="act-row"><div class="act-time">9:00 AM</div><div class="act-body"><div class="act-title">Final Villa Breakfast</div><div class="act-note">Pack the night before. Morning is relaxed — last swim, load the van, no rush.</div></div></div>
+            <div class="act-row"><div class="act-time">11:00 AM</div><div class="act-body"><div class="act-title">Check Out — Minibus to Ubud (~1.5 hrs)</div><div class="act-note">Beautiful drive through Denpasar and up into the Balinese highlands. Toddlers often sleep for half of it. Ask the driver to pull over at a rice field viewpoint — 5 min stop, great photos. Arrive Ubud ~12:30–1 PM.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UBUD LEG -->
+    <div class="leg-block reveal">
+      <div class="leg-title-bar">
+        <div class="leg-icon jungle">🌿</div>
+        <div><div class="leg-name">Ubud</div><div class="leg-dates">Monday June 15 – Thursday June 18 · 3 nights</div></div>
+      </div>
+      <div class="days-timeline">
+        <div class="day-block">
+          <div class="day-dot"></div>
+          <div class="day-date">Monday · 15 June</div>
+          <div class="day-title">Arrive Ubud — Culture Night</div>
+          <div class="activities">
+            <div class="act-row"><div class="act-time">1:00 PM</div><div class="act-body"><div class="act-title">Check In — Jungle Villa Pool</div><div class="act-note">Ubud feels entirely different from Seminyak: cooler (~24°C), quieter, lush green. Let the kids settle. The sound of jungle birds and water is immediate.</div></div></div>
+            <div class="act-row"><div class="act-time">4:00 PM</div><div class="act-body"><div class="act-title">Walk Jl. Hanoman & Ubud Town</div><div class="act-note">Flat and stroller-friendly. Buy sarongs here for temple visits (IDR 50–80k each — you'll need them for Tirta Empul and Goa Gajah tomorrow). Browse silver, batik, and local art.</div></div></div>
+            <div class="act-row"><div class="act-time">6:30 PM</div><div class="act-body"><div class="act-title">Ubud Palace — Kecak or Legong Dance</div><div class="act-note">Held nightly at the Royal Palace (Puri Saren Agung) in the heart of Ubud. Sara will be completely transfixed by the costumes, gamelan music, and fire. Shlok may nap through it — still absolutely worth going. ~IDR 100k per adult. Arrive 20 min early for good seats.</div></div></div>
+          </div>
+        </div>
+        <div class="day-block">
+          <div class="day-dot"></div>
+          <div class="day-date">Tuesday · 16 June</div>
+          <div class="day-title">Rice Terraces, Coconuts & Monkeys</div>
+          <div class="activities">
+            <div class="act-row"><div class="act-time">7:30 AM</div><div class="act-body"><div class="act-title">Tegallalang Rice Terraces</div><div class="act-note">Go early — extraordinary morning light, thin crowds before 9 AM. The green terraces are spectacular in June. Bring a carrier/sling for Shlok on the uneven paths. Sara will love running between the paddies.</div></div></div>
+            <div class="act-row"><div class="act-time">9:00 AM</div><div class="act-body"><div class="act-title">Mupu Rice Terrace — Hidden Gem (★4.9)</div><div class="act-note">Just next to Tegallalang. A family-owned plot with a warm, chatty owner who explains the rice growing cycle and sells huge fresh coconuts. Low-key, authentic, no tourist crowds. A highlight of the whole trip.</div></div></div>
+            <div class="act-row"><div class="act-time">10:00 AM</div><div class="act-body"><div class="act-title">Coffee Stop — Terrace Café with Pool</div><div class="act-note">Several cafés along Tegallalang have shallow infinity pools overlooking the paddies. Kids can splash in the shallow end while adults have their first proper coffee of the morning.</div></div></div>
+            <div class="act-row"><div class="act-time">12:00 PM</div><div class="act-body"><div class="act-title">Villa Lunch + Toddler Nap <span class="kid-badge">🧒 essential nap</span></div><div class="act-note">Don't push through this. Shlok and Sara will be exhausted from an active morning outdoors. The afternoon activity (Monkey Forest) needs them fresh and happy.</div></div></div>
+            <div class="act-row"><div class="act-time">3:00 PM</div><div class="act-body"><div class="act-title">Sacred Monkey Forest Sanctuary</div><div class="act-note">Sara will absolutely love this — she'll talk about "the monkeys" for months. Key rules: keep Shlok in arms/carrier at all times (monkeys grab), no eye contact with monkeys, no food/plastic bags/shiny items. Rangers are helpful and approachable. ~IDR 120k per adult. Allow 2 hours. Rating: ★4.5, 58,000+ reviews.</div></div></div>
+            <div class="act-row"><div class="act-time">7:00 PM</div><div class="act-body"><div class="act-title">Dinner — Locavore or Hujan Locale</div><div class="act-note">Locavore is one of SE Asia's finest restaurants. The adults can rotate: half go for early seating, half stay with the toddlers at the villa, then swap for drinks/dessert nearby. Book Locavore 2–3 weeks ahead minimum.</div></div></div>
+          </div>
+        </div>
+        <div class="day-block">
+          <div class="day-dot"></div>
+          <div class="day-date">Wednesday · 17 June</div>
+          <div class="day-title">Temples, Water & A Slow Afternoon</div>
+          <div class="activities">
+            <div class="act-row"><div class="act-time">8:30 AM</div><div class="act-body"><div class="act-title">Tirta Empul — Sacred Water Temple</div><div class="act-note">One of Bali's most sacred sites: a spring-fed purification pool where Balinese Hindus conduct ritual bathing. You can participate or respectfully observe. Sarong required (provided at gate). Sara is perfectly old enough to understand "holy water" — she will remember this.</div></div></div>
+            <div class="act-row"><div class="act-time">10:30 AM</div><div class="act-body"><div class="act-title">Goa Gajah — Elephant Cave Temple</div><div class="act-note">9th-century rock-carved temple with a famous demon-face entrance. Kids are fascinated by the carved stone figure. A 20 min drive from Tirta Empul. Quick stop, ~45 min total.</div></div></div>
+            <div class="act-row"><div class="act-time">1:00 PM</div><div class="act-body"><div class="act-title">Villa Return — Floating Breakfast Setup + Afternoon Pool</div><div class="act-note">Book the floating breakfast presentation the evening before with the villa — flowers, fruit platters, smoothies arranged in the pool. Beautiful for photos, beautiful for the kids.</div></div></div>
+            <div class="act-row"><div class="act-time">4:00 PM</div><div class="act-body"><div class="act-title">Group Spa — Karsa Spa or In-Villa</div><div class="act-note">Karsa Spa has a children's play area so adults can actually relax. Book 6+ slots simultaneously. Traditional Balinese massage ~IDR 250k per 90 min. Pre-book 1–2 weeks ahead for a group.</div></div></div>
+            <div class="act-row"><div class="act-time">5:30 PM</div><div class="act-body"><div class="act-title">Campuhan Ridge Walk — Golden Hour</div><div class="act-note">Free 2km walk along a jungle ridge overlooking two rivers and rice fields. Best at golden hour. Take the carrier for Shlok. Sara can walk most of it. One of Ubud's most peaceful experiences.</div></div></div>
+            <div class="act-row"><div class="act-time">7:30 PM</div><div class="act-body"><div class="act-title">Farewell Dinner — In-Villa Balinese Feast</div><div class="act-note">Last night all together. Have the villa chef prepare a full traditional spread: babi guling (suckling pig), bebek betutu (slow-roasted duck), lawar, satay lilit, and pisang goreng. Everyone around one table. Pack bags after dinner.</div></div></div>
+          </div>
+        </div>
+        <div class="day-block">
+          <div class="day-dot"></div>
+          <div class="day-date">Thursday · 18 June</div>
+          <div class="day-title">Departure Day</div>
+          <div class="activities">
+            <div class="act-row"><div class="act-time">7:00 AM</div><div class="act-body"><div class="act-title">Final Breakfast + Last Swim</div><div class="act-note">Check out by 9:30 AM. Do a full room sweep: passports, charging cables, kids' toys, medications. Check every drawer and bathroom surface twice.</div></div></div>
+            <div class="act-row"><div class="act-time">9:30 AM</div><div class="act-body"><div class="act-title">Minibus to Ngurah Rai Airport (~1.5 hrs)</div><div class="act-note">MH714 departs 13:05. With 2 toddlers, allow extra time at check-in and security. Target airport arrival by 10:30 AM. Say farewell to Sitasma & Ajnish here if they have a different departure.</div></div></div>
+            <div class="act-row"><div class="act-time">13:05</div><div class="act-body"><div class="act-title">MH714 DPS → KUL · 2h 55m</div><div class="act-note">Land KUL 16:00. 3h 15m layover — enough for a proper meal and nappy changes. MH114 KUL 19:15 → KTM 21:45. Home tonight.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VILLAS -->
+<section id="villas">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-number">03</div>
+      <div class="section-label-group">
+        <div class="section-eyebrow">4+ Bedrooms · Private Pool · Request Pool Fence for Toddlers</div>
+        <div class="section-title">Recommended Villas</div>
+      </div>
+    </div>
+
+    <div class="ornament">· · ·</div>
+    <p class="sub-heading">Seminyak — Jun 13–15 (2 nights)</p>
+    <div class="villas-grid reveal">
+      <div class="villa-card featured">
+        <div class="villa-header">
+          <div class="villa-feat-badge">⭐ Top Pick</div>
+          <div class="villa-loc">Sari Dewi · Seminyak</div>
+          <div class="villa-name">Villa Massilia Bali</div>
+          <div class="villa-addr">Jl. Sari Dewi Temuku Gang IV No.8, Seminyak</div>
+          <div class="villa-rating"><span class="stars">★★★★★</span><span class="r-num">4.9</span><span class="r-cnt">(231 reviews)</span></div>
+        </div>
+        <div class="villa-tags">
+          <span class="vtag g">In-villa chef</span><span class="vtag g">Buggy on call</span><span class="vtag g">Transport arranged</span><span class="vtag">Near beach</span><span class="vtag">Lush tropical design</span>
+        </div>
+        <div class="villa-note">Staff arrange in-villa dinners, transport and day trips. Reviews specifically mention kids being warmly welcomed. Buggy service means toddler logistics are easy. Request pool fence for Shlok & Sara when booking — they'll sort it no problem.</div>
+      </div>
+      <div class="villa-card">
+        <div class="villa-header">
+          <div class="villa-loc">Oberoi · Seminyak</div>
+          <div class="villa-name">Villa Lulito</div>
+          <div class="villa-addr">Jl. Kayu Aya Oberoi 12B, Seminyak</div>
+          <div class="villa-rating"><span class="stars">★★★★★</span><span class="r-num">4.6</span><span class="r-cnt">(25 reviews)</span></div>
+        </div>
+        <div class="villa-tags">
+          <span class="vtag g">Chef Ari cooks kids' meals</span><span class="vtag g">Staff like family</span><span class="vtag">Large pool</span><span class="vtag">Great for 9+ people</span>
+        </div>
+        <div class="villa-note">Reviewed by families of 9+ with young children. Chef Ari accommodates vegan, vegetarian, and kids' dishes without fuss. Gusti and his team are exceptional — multiple reviews say "staff made the holiday." Confirm 4BR configuration when booking.</div>
+      </div>
+      <div class="villa-card">
+        <div class="villa-header">
+          <div class="villa-loc">Sari Dewi · Seminyak</div>
+          <div class="villa-name">Kembali Villas Seminyak</div>
+          <div class="villa-addr">Jl. Sari Dewi No.14D, Seminyak</div>
+          <div class="villa-rating"><span class="stars">★★★★★</span><span class="r-num">4.7</span><span class="r-cnt">(171 reviews)</span></div>
+        </div>
+        <div class="villa-tags">
+          <span class="vtag g">Twice-daily service</span><span class="vtag g">In-villa massage</span><span class="vtag">2 min to beach</span><span class="vtag">Quiet lane</span>
+        </div>
+        <div class="villa-note">Consistent 5-star service reviews. Warm welcome on arrival with smoothies and cool cloths. Spacious pool area. Best beds in Seminyak according to multiple reviews. May need 2 adjoining units for 8 adults.</div>
+      </div>
+    </div>
+    <div class="alert alert-urgent reveal">⚠ <strong>Book a 4-bedroom minimum</strong> for 8 adults. When booking, explicitly state: "We have a 16-month-old and a 3-year-old — please provide a pool fence or safety net." Reconfirm this 2 days before arrival. Also request a cot/travel cot for Shlok.</div>
+
+    <div style="height:48px"></div>
+    <div class="ornament">· · ·</div>
+    <p class="sub-heading">Ubud — Jun 15–18 (3 nights)</p>
+    <div class="villas-grid reveal">
+      <div class="villa-card featured">
+        <div class="villa-header">
+          <div class="villa-feat-badge">⭐ Top Pick</div>
+          <div class="villa-loc">Tegallalang · Ubud</div>
+          <div class="villa-name">Bidadari Private Villas & Retreat</div>
+          <div class="villa-addr">Jl. Raya Kelabang Moding, Tegallalang, Ubud</div>
+          <div class="villa-rating"><span class="stars">★★★★★</span><span class="r-num">4.7</span><span class="r-cnt">(376 reviews)</span></div>
+        </div>
+        <div class="villa-tags">
+          <span class="vtag g">Multiple private villas on one estate</span><span class="vtag g">24/7 butler via QR code</span><span class="vtag">In-villa dining</span><span class="vtag">Jungle views</span><span class="vtag">Next to Tegallalang</span>
+        </div>
+        <div class="villa-note">Book 2–3 adjoining private villas on the same estate. Each couple gets a private space and bathroom while you remain a group. 24/7 butler responds instantly via QR code ordering system. Manager Rana is praised in every review for swift, genuine care.</div>
+      </div>
+      <div class="villa-card">
+        <div class="villa-header">
+          <div class="villa-loc">Kedewatan · Ubud</div>
+          <div class="villa-name">Ubud Padi Villas</div>
+          <div class="villa-addr">Jl. Pura Ulun Carik No.4, Kedewatan, Ubud</div>
+          <div class="villa-rating"><span class="stars">★★★★★</span><span class="r-num">4.8</span><span class="r-cnt">(1,274 reviews)</span></div>
+        </div>
+        <div class="villa-tags">
+          <span class="vtag g">Rice terrace pool views</span><span class="vtag g">Daily massages on-site</span><span class="vtag">Included breakfast</span><span class="vtag">1274 consistent reviews</span>
+        </div>
+        <div class="villa-note">Extraordinary consistency across 1,274 reviews. Private pool villas overlooking rice terraces. Generous included breakfast. On-site massage team — Mari and Mia are specifically praised. Note: access path is narrow, confirm vehicle access before booking.</div>
+      </div>
+      <div class="villa-card">
+        <div class="villa-header">
+          <div class="villa-loc">Kedewatan · Ubud</div>
+          <div class="villa-name">Ubud Paradise Luxury Villa</div>
+          <div class="villa-addr">Jl. Raya Sanggingan No.20, Kedewatan, Ubud</div>
+          <div class="villa-rating"><span class="stars">★★★★★</span><span class="r-num">4.8</span><span class="r-cnt">(130 reviews)</span></div>
+        </div>
+        <div class="villa-tags">
+          <span class="vtag o">Floating breakfast setups</span><span class="vtag o">Anniversary surprises</span><span class="vtag">Private pool</span><span class="vtag">Owner Sumaba is wonderful</span>
+        </div>
+        <div class="villa-note">Owner Sumaba personally arranges floating breakfasts, romantic dinners, and anniversary setups. If any couple in the group has a birthday or occasion during the trip, tell him — he goes above and beyond without being asked.</div>
+      </div>
+    </div>
+    <div class="alert alert-tip reveal" style="margin-top:14px">💡 <strong>Group villa strategy for Ubud:</strong> Rather than one large villa with everyone sharing bathrooms, book 2–3 adjoining private villas on one estate (Bidadari does this perfectly). Each couple has their own space. The kids can freely move between adults. Far better experience for 5 nights total.</div>
+  </div>
+</section>
+
+<!-- DINING -->
+<section id="dining">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-number">04</div>
+      <div class="section-label-group">
+        <div class="section-eyebrow">Restaurants · Beach Clubs · In-Villa Dining</div>
+        <div class="section-title">Where to Eat & Drink</div>
+      </div>
+    </div>
+
+    <p class="sub-heading reveal">🏖 Seminyak</p>
+    <div class="dining-grid reveal">
+      <div class="dining-card">
+        <div class="d-type">Beach Club · Sunset · Book Ahead</div>
+        <div class="d-name">Potato Head Beach Club</div>
+        <div class="d-desc">The iconic Seminyak sundowner destination. Built from thousands of reclaimed wooden doors — architecturally stunning. Reserve sun-beds online before you arrive. Arrive by 5 PM on weekends to secure your spot. Good cocktails, buzzy atmosphere, direct beach access.</div>
+        <div class="villa-tags"><span class="vtag">★4.6 · 23,000+ reviews</span><span class="vtag o">Reserve online in advance</span></div>
+      </div>
+      <div class="dining-card">
+        <div class="d-type">Beachfront · Fire Show · Live Band</div>
+        <div class="d-name">Ocean Grand Beach</div>
+        <div class="d-desc">Nightly fire ring performance and live cover band. Outstanding fresh seafood — the whole sea bass in Indonesian spicy sauce and the crab dishes are exceptional. Rating 4.8 across 2,000+ reviews. Very family-friendly outdoor setting. A perfect group dinner.</div>
+        <div class="villa-tags"><span class="vtag">★4.8 · 2,094 reviews</span><span class="vtag g">Family-friendly · No min spend before sunset</span></div>
+      </div>
+      <div class="dining-card">
+        <div class="d-type">Rooftop Bar · 2-for-1 Happy Hour</div>
+        <div class="d-name">Double Six Rooftop Bar</div>
+        <div class="d-desc">Best rooftop sunset views along the entire Seminyak strip. 2-for-1 cocktails during happy hour (from 5 PM). Great group energy, live DJ later in the evening. Open air so fine for toddlers before 7 PM. Wagyu and lamb kofta are standout food choices.</div>
+        <div class="villa-tags"><span class="vtag">★4.6 · Opens 5 PM</span><span class="vtag o">2-for-1 until sunset</span></div>
+      </div>
+      <div class="dining-card">
+        <div class="d-type">Rooftop Tasting Menu · Intimate</div>
+        <div class="d-name">KUUKI Rooftop Dining</div>
+        <div class="d-desc">Chef Saiful's Itameshi (Italian-Japanese) tasting menu. Still a relative hidden gem. Standouts: black pepper udon with tender beef, 5-spice duck fried baos, black sesame panna cotta. Beautiful rooftop setting. Good for a couple's dinner while others hold down the villa.</div>
+        <div class="villa-tags"><span class="vtag">★4.7 · Currently under-discovered</span><span class="vtag o">Reserve ahead</span></div>
+      </div>
+    </div>
+
+    <div style="height:36px"></div>
+    <p class="sub-heading reveal">🌿 Ubud</p>
+    <div class="dining-grid reveal">
+      <div class="dining-card">
+        <div class="d-type">Fine Dining · Book 3+ Weeks Ahead</div>
+        <div class="d-name">Locavore</div>
+        <div class="d-desc">One of Southeast Asia's most celebrated restaurants. Champions Indonesian ingredients through extraordinary modern technique. Tasting menu format. Best strategy: 4 adults go for early seating, other 4 stay with the kids, then swap for the dessert course and drinks bar.</div>
+        <div class="villa-tags"><span class="vtag">Multiple awards</span><span class="vtag o">Book NOW at locavorebali.com</span></div>
+      </div>
+      <div class="dining-card">
+        <div class="d-type">Modern Indonesian · Good for Groups</div>
+        <div class="d-name">Hujan Locale</div>
+        <div class="d-desc">Creative Indonesian cooking in a beautiful two-story space. More casual than Locavore but equally delicious — excellent cocktail program, warm service, great group atmosphere. Best fallback if Locavore is fully booked. Kid-welcoming environment.</div>
+        <div class="villa-tags"><span class="vtag">Group-friendly</span><span class="vtag g">Kid-welcoming</span></div>
+      </div>
+      <div class="dining-card">
+        <div class="d-type">Casual · Toddler Paradise</div>
+        <div class="d-name">Nook Rice Fields</div>
+        <div class="d-desc">Low tables and bean bags over active rice paddies. Kids can watch ducks, frogs, and farmers working while you eat. Good Indonesian and Western food with excellent fresh juices. The most charming casual lunch spot in Seminyak — also good for groups.</div>
+        <div class="villa-tags"><span class="vtag g">Toddlers love it</span><span class="vtag">Open air · No reservations needed</span></div>
+      </div>
+      <div class="dining-card">
+        <div class="d-type">Balinese Feast · Final Night</div>
+        <div class="d-name">In-Villa Farewell Dinner</div>
+        <div class="d-desc">Last night of the trip — have the Ubud villa chef cook a full traditional Balinese spread: babi guling (suckling pig), bebek betutu (slow-roasted duck with Balinese spices), lawar, satay lilit, and pisang goreng for dessert. Pre-arrange 1 day ahead.</div>
+        <div class="villa-tags"><span class="vtag o">Pre-arrange with villa concierge</span><span class="vtag g">Best last night</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-number">05</div>
+      <div class="section-label-group">
+        <div class="section-eyebrow">Seminyak · Ubud · Key Stops</div>
+        <div class="section-title">Maps & Locations</div>
+      </div>
+    </div>
+    <div class="map-embed reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d504073.1!2d115.08!3d-8.62!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e0!4m5!1s0x2dd23f9d4b8f67d3%3A0x5dc9d7abb84a1c!2sNgurah+Rai+International+Airport%2C+Bali!3m2!1d-8.7480!2d115.1672!4m5!1s0x2dd23e2a76c5e7c1%3A0x5aff6b67c47b5e56!2sSeminyak%2C+Bali!3m2!1d-8.690!2d115.160!4m5!1s0x2dd23f4ef1c2a041%3A0x1bb17f449e5c5ace!2sPotato+Head+Beach+Club!3m2!1d-8.6794!2d115.1499!4m5!1s0x2dd2386400c8ed8d%3A0x6ab8e8cf58ef3e0!2sUbud%2C+Bali!3m2!1d-8.5069!2d115.2625!4m5!1s0x2dd23a72c96d5527%3A0x8d5e6e8a0f1cbb!2sTegallalang+Rice+Terrace%2C+Bali!3m2!1d-8.4317!2d115.2793!4m5!1s0x2dd23521de44cef1%3A0xa46af2c068ac8ab9!2sSacred+Monkey+Forest%2C+Ubud!3m2!1d-8.5194!2d115.2606!4m5!1s0x2dd2310ef40b6059%3A0x1a1e9cc94f0d1e9b!2sTirta+Empul+Temple%2C+Bali!3m2!1d-8.4150!2d115.3160!5e0!3m2!1sen!2s!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="map-pins reveal">
+      <div class="map-pin"><div class="pin-dot" style="background:#E24B4A"></div><div><div class="pin-name">Ngurah Rai Airport (DPS)</div><div class="pin-type">Arrive Jun 13 · 12:05 PM</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#378ADD"></div><div><div class="pin-name">Seminyak</div><div class="pin-type">Base · Jun 13–15 · 2 nights</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#378ADD"></div><div><div class="pin-name">Potato Head Beach Club</div><div class="pin-type">Sunset · Jun 14</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#378ADD"></div><div><div class="pin-name">Ocean Grand Beach</div><div class="pin-type">Dinner + Fire Show · Jun 14</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#378ADD"></div><div><div class="pin-name">Double Six Rooftop</div><div class="pin-type">Sunset Cocktails · Jun 14</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#1D9E75"></div><div><div class="pin-name">Ubud</div><div class="pin-type">Base · Jun 15–18 · 3 nights</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#1D9E75"></div><div><div class="pin-name">Ubud Royal Palace</div><div class="pin-type">Kecak Dance · Jun 15</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#1D9E75"></div><div><div class="pin-name">Tegallalang Rice Terraces</div><div class="pin-type">Morning · Jun 16</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#1D9E75"></div><div><div class="pin-name">Mupu Rice Terrace</div><div class="pin-type">Hidden gem · Jun 16</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#1D9E75"></div><div><div class="pin-name">Sacred Monkey Forest</div><div class="pin-type">Afternoon · Jun 16</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#EF9F27"></div><div><div class="pin-name">Tirta Empul Temple</div><div class="pin-type">Morning · Jun 17</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#EF9F27"></div><div><div class="pin-name">Goa Gajah (Elephant Cave)</div><div class="pin-type">Morning · Jun 17</div></div></div>
+      <div class="map-pin"><div class="pin-dot" style="background:#EF9F27"></div><div><div class="pin-name">Campuhan Ridge Walk</div><div class="pin-type">Golden hour stroll · Jun 17</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-number">06</div>
+      <div class="section-label-group">
+        <div class="section-eyebrow">8 Adults · Shlok (16mo) · Sara (3yo) · June 2026</div>
+        <div class="section-title">Tips & Essentials</div>
+      </div>
+    </div>
+    <div class="tips-grid reveal">
+      <div class="tip-card">
+        <span class="tip-icon">👶</span>
+        <div class="tip-title">Travelling with Shlok (16 months)</div>
+        <div class="tip-body">Bring a <span class="tip-hl">soft structured carrier</span> (ERGObaby, Lillebaby) — temples have uneven stone steps, rice terraces have muddy narrow paths. Strollers won't work everywhere. Keep him in the carrier at Monkey Forest — monkeys are curious and will grab bags/items. Request cot from both villas. Pack familiar snacks. Night flights: he may not sleep — prepare tablet and sensory toys.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🧒</span>
+        <div class="tip-title">Travelling with Sara (3 years)</div>
+        <div class="tip-body">Sara is at a <span class="tip-hl">perfect age for Bali</span>. She'll remember the monkeys, fire dancers, temple carvings, and pool forever. Buy her a small sarong at Jl. Hanoman — kids love wearing them at temples. The Ubud Palace dance is magical for this age. Keep a change of clothes accessible in the day bag — she will find both water and mud.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🏊</span>
+        <div class="tip-title">Pool Safety — Non-Negotiable</div>
+        <div class="tip-body"><span class="tip-hl">Always request a pool fence or safety net</span> before arrival at both villas. With Shlok (16 months) this is non-negotiable. Most quality villas provide this at no charge on request. State it in your booking message, your confirmation email, and once more by WhatsApp 2 days before arrival. Don't assume it will be there.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🌡️</span>
+        <div class="tip-title">June Weather — Ideal Timing</div>
+        <div class="tip-body">Early dry season — <span class="tip-hl">the best time of year</span> to visit Bali. Days 28–31°C, low humidity, almost no rain, cool Ubud evenings (~22°C). Apply SPF 50+ every 90 min on the kids — tropical sun is deceptive even when cloudy. Ubud mornings at the rice terraces can be misty and cool — bring a light layer.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🚐</span>
+        <div class="tip-title">Group Transport</div>
+        <div class="tip-body">Book a <span class="tip-hl">dedicated 12-seater minibus</span> for all major transfers: DPS airport arrival (Jun 13), Seminyak→Ubud (Jun 15), and Ubud→DPS (Jun 18). ~IDR 600–900k per trip, split 8 ways = almost nothing. Have the villa arrange it — they know trusted drivers. Never rely on multiple Grab rides with 2 toddlers and a mountain of luggage.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🛕</span>
+        <div class="tip-title">Temple Etiquette</div>
+        <div class="tip-body">All visitors must wear a <span class="tip-hl">sarong below the knee</span> (provided or sold at gates, ~IDR 30–50k). Speak quietly inside. Never step over temple offerings on the ground — step around them. Avoid pointing with one finger; use the whole hand. Children can enter all the temples on this itinerary. A genuinely respectful attitude will earn smiles from local worshippers.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🇦🇺</span>
+        <div class="tip-title">Sitasma & Ajnish (Australia)</div>
+        <div class="tip-body">Direct flights to Bali from <span class="tip-hl">Sydney ~6h, Melbourne ~6.5h, Brisbane ~7h</span>. Confirm DPS arrival time immediately so you can coordinate the airport minibus. Australian citizens need a Bali Visa on Arrival (VOA) — USD 35 per person at DPS airport. Have USD cash ready or use the airport VOA card payment machine.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">💊</span>
+        <div class="tip-title">Health & Medicine</div>
+        <div class="tip-body">Pack one shared kit: <span class="tip-hl">DEET mosquito repellent</span> (especially for evenings), oral rehydration salts for the kids, antihistamine, paracetamol for toddlers, sunburn cream, baby formula/food for Shlok if required. Avoid ice from street stalls, only bottled water. Good pharmacies (Apotek) are widely available. Bali belly is possible — go easy on the first day.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">💸</span>
+        <div class="tip-title">Money & Cash</div>
+        <div class="tip-body">Cash is king in Bali. <span class="tip-hl">Withdraw IDR at DPS airport ATMs</span> on arrival — competitive rates and always available. Avoid street money changers (scam risk). Use official changers at Seminyak Square or your villa. Approximate: IDR 100,000 ≈ AUD 10 / USD 6. Good restaurant meal: IDR 100–200k per person. Bali massage: IDR 150–250k per hour.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">📱</span>
+        <div class="tip-title">Connectivity & Coordination</div>
+        <div class="tip-body">Buy a <span class="tip-hl">Telkomsel SIM</span> at the DPS airport (best coverage island-wide, ~IDR 100k for 10–15GB). Create a WhatsApp group for all 8 adults before you land. Share villa addresses and the driver's WhatsApp in the group. Download Bali maps offline on Google Maps before you fly — some areas have patchy signal.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🙏</span>
+        <div class="tip-title">Cultural Respect</div>
+        <div class="tip-body">Bali is predominantly Hindu. <span class="tip-hl">Step around offerings</span> (small flower baskets on the ground) — never over them. A simple "Selamat pagi" (good morning) or "Terima kasih" (thank you) earns genuine warmth everywhere. Tipping is not mandatory but deeply appreciated — IDR 20–50k for good service feels right.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🎒</span>
+        <div class="tip-title">Packing Smart for 10</div>
+        <div class="tip-body">Pack one shared first-aid kit rather than duplicating across bags. Reef-safe sunscreen (better for ocean swims). A portable bluetooth speaker for villa evenings. Light linen shirts/dresses for restaurants — it gets warm quickly. Laundry at the villa is ~IDR 15,000/kg. <span class="tip-hl">Pack light</span> — you'll buy things you didn't know you needed in Seminyak.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGISTICS -->
+<section id="logistics">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-number">07</div>
+      <div class="section-label-group">
+        <div class="section-eyebrow">Practical Details · Transfers · Budget</div>
+        <div class="section-title">Logistics</div>
+      </div>
+    </div>
+    <div class="logistics-grid reveal">
+      <div>
+        <div class="logistics-heading">Airport Arrival — Jun 13</div>
+        <ul class="logi-list">
+          <li>Land DPS 12:05 PM. Immigration for 8 adults + infant: allow 45–60 min with bags.</li>
+          <li>Shlok travels on infant ticket MH/ETKT 232 6027115453 — present both tickets together at all check-in and boarding points.</li>
+          <li>Visa on arrival: NPR passport holders pay USD 35 per person at DPS. Have USD cash or use VOA card machine. Sitasma & Ajnish (Australian passports) same fee.</li>
+          <li>Minibus: have villa pre-confirm driver for 10 pax + full luggage. Meet at arrivals exit. Share WhatsApp number before landing.</li>
+          <li>Coordinate with Sitasma & Ajnish — if they're landing near noon, wait and share the van.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="logistics-heading">Seminyak → Ubud — Jun 15</div>
+        <ul class="logi-list">
+          <li>Depart villa ~11 AM. Journey ~1.5 hrs through the Balinese highlands.</li>
+          <li>Book same minibus driver for continuity — tip IDR 100k and they'll be reliable all trip.</li>
+          <li>Ask driver for a short rice field viewpoint stop en route — 5 min, excellent photos.</li>
+          <li>Pack snacks and a tablet loaded with Shlok's favourite content — he'll sleep ~30 min then need entertainment.</li>
+          <li>Sara can look out the window and count rice paddies — genuinely engaging for a 3-year-old.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="logistics-heading">Departure Day — Jun 18</div>
+        <ul class="logi-list">
+          <li>Flight MH714 departs DPS 13:05. Arrive airport by 10:30 AM at the latest — international terminal.</li>
+          <li>Depart Ubud villa by 9:00–9:30 AM maximum. Traffic on the Ubud-Denpasar road can be unpredictable.</li>
+          <li>With 2 toddlers at international departures: allow extra time at check-in, security, and gate.</li>
+          <li>KUL layover: 3h 15m — enough for a meal, baby care, and a walk before MH114 at 19:15.</li>
+          <li>Arrive KTM 21:45. Pre-arrange onward transport from Tribhuvan.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="logistics-heading">Budget Estimates Per Person</div>
+        <ul class="logi-list">
+          <li>Seminyak villa (4BR, 2 nights): ~USD 250–500/night total → split 8 ways = very reasonable</li>
+          <li>Ubud villa (3 nights on estate): ~USD 300–600/night total → split 8 ways</li>
+          <li>Meals: ~IDR 300–600k per adult per day (villa + restaurants mix)</li>
+          <li>Entrances & activities: ~IDR 400–600k total per adult for entire trip</li>
+          <li>In-villa massages: ~IDR 250k per 90 min per person</li>
+          <li>Minibus transfers: ~IDR 2.5M total for all 3 transfers → split 8 ways ≈ IDR 310k each (~USD 20)</li>
+          <li>SIM card: IDR 80–100k per person for the whole trip</li>
+          <li>Tips budget: keep ~IDR 200k per day as a group for drivers, villa staff, guides</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-number">08</div>
+      <div class="section-label-group">
+        <div class="section-eyebrow">Action Items · Click to Mark Done</div>
+        <div class="section-title">Booking Checklist</div>
+      </div>
+    </div>
+    <div class="checklist-items reveal">
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 0)"></div><div><div class="cl-title">Book Seminyak Villa (4BR minimum) <span class="badge-urgent">Book Now</span></div><div class="cl-sub">Villa Massilia (★4.9, top pick) or Villa Lulito. State: 8 adults + toddler 16mo + child 3yo. Request pool fence, cot for Shlok, and Jun 13 arrival by 2 PM. Confirm in-villa chef availability.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 1)"></div><div><div class="cl-title">Book Ubud Villa / Estate (2–3 private villas) <span class="badge-urgent">Book Now</span></div><div class="cl-sub">Bidadari Private Villas & Retreat is top pick — ask for 2–3 adjoining private villas on same estate. Jun 15 arrival ~1 PM. Request pool fence at each villa for Shlok.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 2)"></div><div><div class="cl-title">Reserve Locavore Restaurant, Ubud <span class="badge-urgent">Book Now</span></div><div class="cl-sub">Fills 2–3 weeks ahead. Book for Jun 16 or 17 evening. Choose covers based on who can come (suggest 6). locavorebali.com. If fully booked, fall back to Hujan Locale.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 3)"></div><div><div class="cl-title">Confirm Sitasma & Ajnish Flight Details <span class="badge-urgent">Urgent</span></div><div class="cl-sub">Get their DPS arrival time and date. If Jun 13 near noon, share the minibus. Confirm departure date to align Ubud villa checkout logistics.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 4)"></div><div><div class="cl-title">Book 12-Seater Airport Minibus x3 Journeys <span class="badge-soon">Soon</span></div><div class="cl-sub">Jun 13: DPS→Seminyak villa. Jun 15: Seminyak→Ubud. Jun 18: Ubud→DPS (depart 9:30 AM sharp). Ask villa concierge to arrange trusted driver. Get WhatsApp number for day-of coordination.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 5)"></div><div><div class="cl-title">Request Pool Fence/Net at Both Villas <span class="badge-soon">When Booking</span></div><div class="cl-sub">State this explicitly in booking message: "We have a 16-month-old — please ensure pool safety barrier is installed before our arrival." Reconfirm by WhatsApp 48 hours before check-in date.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 6)"></div><div><div class="cl-title">Reserve Potato Head Beach Club Sun-Beds <span class="badge-soon">1 Week Before</span></div><div class="cl-sub">For Jun 14 afternoon/sunset. Walk-ins are turned away on weekends. Book at least a small section online. Website: seminyak.potatohead.co</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 7)"></div><div><div class="cl-title">Book Karsa Spa Group Slots, Ubud <span class="badge-soon">2 Weeks Before</span></div><div class="cl-sub">For Jun 17 afternoon. Request 6+ slots simultaneously — they'll accommodate. Karsa has a kids' play area. Traditional Balinese massage ~IDR 250k / 90 min. Call or book via their website.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 8)"></div><div><div class="cl-title">Pack Soft Carrier/Sling for Shlok <span class="badge-soon">Pre-Departure</span></div><div class="cl-sub">ERGObaby, Lillebaby, or similar. Essential for rice terraces, temples, and Monkey Forest where strollers don't work. Bring the stroller too for flat surfaces and beach walks — but the carrier is the primary tool.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 9)"></div><div><div class="cl-title">Bali Visa on Arrival (VOA) — All Passports <span class="badge-soon">At Airport</span></div><div class="cl-sub">USD 35 per person paid at DPS airport immigration. Bring USD cash or use the VOA payment machines (card accepted). This applies to Nepal and Australian passport holders. Fast-track VOA lanes exist — look for them.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 10)"></div><div><div class="cl-title">Create WhatsApp Group for All 8 Adults <span class="badge-soon">Now</span></div><div class="cl-sub">Include Sitasma and Ajnish immediately. Share: both villa addresses, driver WhatsApp number, this itinerary PDF link, and each other's flight details. Don't rely on in-person coordination once in Bali.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 11)"></div><div><div class="cl-title">Pre-Arrange Floating Breakfast at Ubud Villa <span class="badge-soon">Day Before</span></div><div class="cl-sub">Request from villa concierge the evening before Jun 17. Flowers, fruit platter, smoothies in the pool. ~IDR 100–200k extra. Beautiful photos, beautiful morning. Sara will talk about it forever.</div></div></div>
+      <div class="cl-item"><div class="cl-box" onclick="toggle(this, 12)"></div><div><div class="cl-title">Pre-Arrange Farewell Balinese Feast at Villa <span class="badge-soon">Day Before</span></div><div class="cl-sub">Request full babi guling / bebek betutu spread from the Ubud villa chef for Jun 17 evening. Give 24 hours notice. Confirm dietary needs (any vegetarians in the group?). This is worth every rupiah.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">Have a beautiful trip, family.</div>
+  <div class="footer-sub">Ayush · Salina · Shlok · Sara · Rama · Sandip · Sitasma · Ajnish</div>
+  <div style="font-size:32px;margin:20px 0;opacity:0.25">🌴</div>
+  <div class="footer-ref" style="margin-top:5px">Generated by Claude · April 2026</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  reveals.forEach(el => obs.observe(el));
+
+  // Checklist with localStorage
+  function toggle(box, i) {
+    box.classList.toggle('done');
+    try { localStorage.setItem('bali_cl_' + i, box.classList.contains('done') ? '1' : ''); } catch(e) {}
+  }
+  document.querySelectorAll('.cl-box').forEach((box, i) => {
+    try { if (localStorage.getItem('bali_cl_' + i) === '1') box.classList.add('done'); } catch(e) {}
+  });
+</script>
+</body>
+</html>
