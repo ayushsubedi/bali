@@ -30,7 +30,7 @@
 
   /* HERO */
   .hero { min-height: 100vh; background: var(--palm); position: relative; display: flex; align-items: flex-end; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 100%, rgba(196,98,45,0.35) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 20%, rgba(45,74,62,0.8) 0%, transparent 70%), linear-gradient(160deg, #1a2e26 0%, #2D4A3E 40%, #1e3a30 100%); }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 20% 100%, rgba(196,98,45,0.5) 0%, transparent 60%), radial-gradient(ellipse 60% 80% at 80% 20%, rgba(45,74,62,0.7) 0%, transparent 70%), linear-gradient(160deg, rgba(26,46,38,0.92) 0%, rgba(45,74,62,0.88) 40%, rgba(30,58,48,0.92) 100%); }
   .hero-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle at 15% 25%, rgba(184,148,42,0.12) 0%, transparent 40%), radial-gradient(circle at 85% 70%, rgba(196,98,45,0.15) 0%, transparent 45%); }
   .hero-content { position: relative; z-index: 2; padding: 80px 60px; max-width: 960px; }
   .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
@@ -218,6 +218,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1400&q=80');background-size:cover;background-position:center;opacity:0.18"></div>
   <div class="hero-pattern"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Fun Trip · June 2026 · Bali, Indonesia</p>
@@ -887,7 +888,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px" class="reveal">
 
       <div style="background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(26,26,24,0.08)">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Bali_Tegallalang_Rice_Terrace.jpg/1200px-Bali_Tegallalang_Rice_Terrace.jpg" alt="Tegallalang Rice Terraces" style="width:100%;height:180px;object-fit:cover;display:block" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80" alt="Tegallalang Rice Terraces" style="width:100%;height:180px;object-fit:cover;display:block" loading="lazy">
         <div style="padding:18px">
           <div style="font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sunset);margin-bottom:5px">Ubud · Jun 16 · 7:30 AM</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--palm);margin-bottom:8px">Tegallalang Rice Terraces</div>
@@ -899,7 +900,7 @@
       </div>
 
       <div style="background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(26,26,24,0.08)">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Ubud_Monkey_Forest.jpg/1200px-Ubud_Monkey_Forest.jpg" alt="Monkey Forest Ubud" style="width:100%;height:180px;object-fit:cover;display:block" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00?w=800&q=80" alt="Monkey Forest Ubud" style="width:100%;height:180px;object-fit:cover;display:block" loading="lazy">
         <div style="padding:18px">
           <div style="font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sunset);margin-bottom:5px">Ubud · Jun 16 · 3:00 PM</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--palm);margin-bottom:8px">Sacred Monkey Forest</div>
@@ -911,7 +912,7 @@
       </div>
 
       <div style="background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(26,26,24,0.08)">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Tirta_Empul_temple_Bali.jpg/1200px-Tirta_Empul_temple_Bali.jpg" alt="Tirta Empul Temple" style="width:100%;height:180px;object-fit:cover;display:block" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1604999333679-b86d54738315?w=800&q=80" alt="Tirta Empul Temple" style="width:100%;height:180px;object-fit:cover;display:block" loading="lazy">
         <div style="padding:18px">
           <div style="font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sunset);margin-bottom:5px">Ubud · Jun 17 · 8:30 AM</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--palm);margin-bottom:8px">Tirta Empul Temple</div>
@@ -923,7 +924,7 @@
       </div>
 
       <div style="background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(26,26,24,0.08)">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pura_Dalem_Agung_Padangtegal_Monkey_Forest_Ubud_Bali_Indonesia.jpg/1200px-Pura_Dalem_Agung_Padangtegal_Monkey_Forest_Ubud_Bali_Indonesia.jpg" alt="Ubud Kecak Dance" style="width:100%;height:180px;object-fit:cover;object-position:top;display:block" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80" alt="Ubud Kecak Dance" style="width:100%;height:180px;object-fit:cover;object-position:top;display:block" loading="lazy">
         <div style="padding:18px">
           <div style="font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sunset);margin-bottom:5px">Ubud · Jun 15 · 6:30 PM</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--palm);margin-bottom:8px">Ubud Palace Kecak Dance</div>
@@ -935,7 +936,7 @@
       </div>
 
       <div style="background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(26,26,24,0.08)">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Seminyak_Beach_Sunset.jpg/1200px-Seminyak_Beach_Sunset.jpg" alt="Seminyak Beach Sunset" style="width:100%;height:180px;object-fit:cover;display:block" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=800&q=80" alt="Seminyak Beach Sunset" style="width:100%;height:180px;object-fit:cover;display:block" loading="lazy">
         <div style="padding:18px">
           <div style="font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sunset);margin-bottom:5px">Seminyak · Jun 13 & 14 · 5:30 PM</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--palm);margin-bottom:8px">Seminyak Beach Sunset</div>
@@ -947,7 +948,7 @@
       </div>
 
       <div style="background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(26,26,24,0.08)">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Goa_Gajah_Bali.jpg/1200px-Goa_Gajah_Bali.jpg" alt="Goa Gajah Elephant Cave" style="width:100%;height:180px;object-fit:cover;display:block" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=800&q=80" alt="Goa Gajah Elephant Cave" style="width:100%;height:180px;object-fit:cover;display:block" loading="lazy">
         <div style="padding:18px">
           <div style="font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sunset);margin-bottom:5px">Ubud · Jun 17 · 10:30 AM</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--palm);margin-bottom:8px">Goa Gajah Elephant Cave</div>
@@ -959,7 +960,7 @@
       </div>
 
       <div style="background:var(--paper);border-radius:14px;overflow:hidden;box-shadow:0 2px 16px rgba(26,26,24,0.08)">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Campuhan_Ridge_Walk_Ubud.jpg/1200px-Campuhan_Ridge_Walk_Ubud.jpg" alt="Campuhan Ridge Walk" style="width:100%;height:180px;object-fit:cover;display:block" onerror="this.style.display='none'">
+        <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=800&q=80" alt="Campuhan Ridge Walk" style="width:100%;height:180px;object-fit:cover;display:block" loading="lazy">
         <div style="padding:18px">
           <div style="font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sunset);margin-bottom:5px">Ubud · Jun 17 · 5:30 PM</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--palm);margin-bottom:8px">Campuhan Ridge Walk</div>
